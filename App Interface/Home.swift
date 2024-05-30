@@ -31,6 +31,8 @@ struct Home: View {
                 .padding(.trailing, 170)
             }
             
+         
+            
             ZStack {
                 Rectangle()
                     .frame(width: 370, height: 130)
@@ -75,174 +77,157 @@ struct Home: View {
                     .font(.system(size: 14))
             }
             
-            HStack{
+            let twoColumns = [GridItem(), GridItem()]
+            LazyVGrid(columns: twoColumns) {
                 ZStack {
                     Rectangle()
                         .cornerRadius(8)
                         .frame(width: 180, height: 200)
-                        .padding(.leading,30)
-                    .foregroundColor(.myGray)
+                        .foregroundColor(.myGray)
                     
                     VStack{
                         Image("beef")
                             .resizable()
                             .frame(width: 140, height: 120)
-                            .padding(.leading,25)
                         
                         Text("Beef noodle soup")
                             .bold()
                             .font(.system(size: 15))
-                            .padding(.leading,11)
                         
                         Text("30 minutes")
                             .font(.system(size: 10))
-                            .padding(.trailing,60)
                         
                         ZStack {
                             Rectangle()
                                 .frame(width: 140, height: 25)
                                 .cornerRadius(6)
-                                .padding(.leading,30)
-                            .foregroundColor(.myRed)
+                                .foregroundColor(.myRed)
                             
                             Text("Add to Favs")
                                 .foregroundColor(.white)
                                 .font(.system(size: 14))
-                                .padding(.leading,27)
                         }
                            
                     }
                 }
                 
-                  
-                
                 ZStack {
                     Rectangle()
                         .cornerRadius(8)
                         .frame(width: 180, height: 200)
-                        .padding(.leading,30)
-                    .foregroundColor(.myGray)
+                        .foregroundColor(.myGray)
                     
-                    VStack{
-                        Image("kimchi")
-                            .resizable()
-                            .frame(width: 140, height: 120)
-                            .padding(.leading,25)
+                    ZStack {
+                        Rectangle()
+                            .cornerRadius(8)
+                            .frame(width: 180, height: 200)
+                            .foregroundColor(.myGray)
                         
-                        Text("Kimchi Fried Rice")
-                            .bold()
-                            .font(.system(size: 15))
-                            .padding(.leading,11)
-                        
-                        Text("20 minutes")
-                            .font(.system(size: 10))
-                            .padding(.trailing,60)
-                        
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 140, height: 25)
-                                .cornerRadius(6)
-                                .padding(.leading,30)
-                            .foregroundColor(.myRed)
+                        VStack{
+                            Image("kimchi")
+                                .resizable()
+                                .frame(width: 140, height: 120)
                             
-                            Text("Add to Favs")
-                                .foregroundColor(.white)
-                                .font(.system(size: 14))
-                                .padding(.leading,27)
+                            Text("Kimchi Fried Rice")
+                                .bold()
+                                .font(.system(size: 15))
+                            
+                            Text("20 minutes")
+                                .font(.system(size: 10))
+                            
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 140, height: 25)
+                                    .cornerRadius(6)
+                                    .foregroundColor(.myRed)
+                                
+                                Text("Add to Favs")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 14))
+                            }
+                               
                         }
-                           
                     }
-                }
                 
-            }
-            
-            HStack{
+                
+                          }
+                
                 ZStack {
                     Rectangle()
                         .cornerRadius(8)
                         .frame(width: 180, height: 200)
-                        .padding(.leading,30)
                     .foregroundColor(.myGray)
                     
                     VStack{
                         Image("wrap")
                             .resizable()
                             .frame(width: 140, height: 120)
-                            .padding(.leading,25)
                         
                         Text("Greek inspired wrap")
                             .bold()
                             .font(.system(size: 15))
-                            .padding(.leading,30)
                         
                         Text("30 minutes")
                             .font(.system(size: 10))
-                            .padding(.trailing,60)
                         
                         ZStack {
                             Rectangle()
                                 .frame(width: 140, height: 25)
                                 .cornerRadius(6)
-                                .padding(.leading,30)
-                            .foregroundColor(.myRed)
+                                .foregroundColor(.myRed)
                             
                             Text("Add to Favs")
                                 .foregroundColor(.white)
                                 .font(.system(size: 14))
-                                .padding(.leading,27)
                         }
                            
                     }
                 }
-                  
                 
                 ZStack {
+                  
                     Rectangle()
                         .cornerRadius(8)
                         .frame(width: 180, height: 200)
-                        .padding(.leading,30)
-                    .foregroundColor(.myGray)
-                    
+                        .foregroundColor(.myGray)
+  
                     VStack{
                         Image("pasta")
                             .resizable()
                             .frame(width: 140, height: 120)
-                            .padding(.leading,25)
                         
                         Text("Tomato & basil pasta")
                             .bold()
                             .font(.system(size: 15))
-                            .padding(.leading,30)
                         
                         Text("25 minutes")
                             .font(.system(size: 10))
-                            .padding(.trailing,60)
                         
                         ZStack {
                             Rectangle()
                                 .frame(width: 140, height: 25)
                                 .cornerRadius(6)
-                                .padding(.leading,30)
+                           //     .padding(.leading,30)
                             .foregroundColor(.myRed)
                             
                             Text("Add to Favs")
                                 .foregroundColor(.white)
                                 .font(.system(size: 14))
-                                .padding(.leading,27)
+                               // .padding(.leading,27)
                         }
                            
                     }
+                
                 }
+                
             }
             
-         
         }
-        
-        
-    }
-}
 
-    
+    }
+            
+}
+        
 #Preview {
     Home()
 }
