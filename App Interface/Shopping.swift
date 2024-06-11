@@ -8,12 +8,10 @@ import SwiftUI
 
 struct Shopping: View {
     var body: some View {
-        
         ScrollView {
             VStack(spacing: 20) {
                 let oneColumn = [GridItem()]
                 LazyVGrid(columns: oneColumn) {
-                    
                     ZStack {
                         Rectangle()
                             .foregroundColor(.myGray)
@@ -159,19 +157,46 @@ struct Shopping: View {
                             .cornerRadius(10)
                             .padding(.horizontal)
                         
-                        let twoColumn = [GridItem(),GridItem()]
-                        LazyVGrid(columns: twoColumn) {
-                            
-                            HStack{
-                                
+                        VStack(spacing: 10) {
+                            HStack {
                                 Text("Subtotal")
-                                    
+                                Spacer()
                                 Text("$8.46")
                             }
-                            
-                            
+                            HStack {
+                                Text("Tax")
+                                Spacer()
+                                Text("$1.10")
+                            }
+                            HStack {
+                                Text("Delivery")
+                                Spacer()
+                                Text("$1.00")
+                            }
+                            HStack {
+                                Text("Total")
+                                    .bold()
+                                    .font(.system(size: 26))
+                                Spacer()
+                                Text("$10.56")
+                                    .bold()
+                                    .font(.system(size: 26))
+                            }
                         }
+                        .padding(.horizontal, 20)
                     }
+                }
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.myRed)
+                        .cornerRadius(8)
+                    .frame(width: 360, height: 60)
+                    
+                    Text("Order")
+                        .font(.system(size: 30))
+                        .foregroundStyle(.myWhite)
+                        .bold()
                 }
             }
         }
