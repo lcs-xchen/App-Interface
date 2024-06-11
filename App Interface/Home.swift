@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+struct Recipe: Identifiable {
+    var id = UUID()
+    var imageName: String
+    var title: String
+    var time: String
+}
+
 struct Home: View {
+    
+    let recipes = [
+        Recipe(imageName: "beef", title: "Beef noodle soup", time: "30 minutes"),
+        Recipe(imageName: "kimchi", title: "Kimchi Fried Rice", time: "20 minutes"),
+        Recipe(imageName: "wrap", title: "Greek inspired wrap", time: "30 minutes"),
+        Recipe(imageName: "pasta", title: "Tomato & basil pasta", time: "25 minutes"),
+        Recipe(imageName: "eggplant", title: "Eggplant Unagi", time: "30 minutes"),
+        Recipe(imageName: "taco", title: "Beef and salad tacos", time: "20 minutes")
+    ]
+    
     var body: some View {
-        
         ScrollView{
             VStack{
                 
@@ -26,8 +42,6 @@ struct Home: View {
                     }
                     .padding(.trailing, 170)
                 }
-                
-                
                 
                 ZStack {
                     Rectangle()
@@ -46,21 +60,17 @@ struct Home: View {
                                 Text("Discover")
                                     .bold()
                                     .font(.system(size: 20))
-                                
-                                
                             }
                             
                             Text("Easy breakfast ideas with 3 ingredients")
                                 .foregroundColor(.white)
                                 .padding(.leading,18)
-                            
                         }
                         
                         Image("breakfast")
                             .resizable()
                             .frame(width: 160, height: 110)
                             .padding(.trailing, 20)
-                        
                     }
                 }
                 
@@ -75,44 +85,7 @@ struct Home: View {
                 
                 let twoColumns = [GridItem(), GridItem()]
                 LazyVGrid(columns: twoColumns) {
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
-                        VStack{
-                            Image("beef")
-                                .resizable()
-                                .frame(width: 140, height: 120)
-                            
-                            Text("Beef noodle soup")
-                                .bold()
-                                .font(.system(size: 15))
-                            
-                            Text("30 minutes")
-                                .font(.system(size: 10))
-                            
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 140, height: 25)
-                                    .cornerRadius(6)
-                                    .foregroundColor(.myRed)
-                                
-                                Text("Add to Favs")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                            }
-                            
-                        }
-                    }
-                    
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
+                    ForEach(recipes) { recipe in
                         ZStack {
                             Rectangle()
                                 .cornerRadius(8)
@@ -120,15 +93,15 @@ struct Home: View {
                                 .foregroundColor(.myGray)
                             
                             VStack{
-                                Image("kimchi")
+                                Image(recipe.imageName)
                                     .resizable()
                                     .frame(width: 140, height: 120)
                                 
-                                Text("Kimchi Fried Rice")
+                                Text(recipe.title)
                                     .bold()
                                     .font(.system(size: 15))
                                 
-                                Text("20 minutes")
+                                Text(recipe.time)
                                     .font(.system(size: 10))
                                 
                                 ZStack {
@@ -141,149 +114,12 @@ struct Home: View {
                                         .foregroundColor(.white)
                                         .font(.system(size: 14))
                                 }
-                                
                             }
                         }
-                        
-                        
                     }
-                    
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
-                        VStack{
-                            Image("wrap")
-                                .resizable()
-                                .frame(width: 140, height: 120)
-                            
-                            Text("Greek inspired wrap")
-                                .bold()
-                                .font(.system(size: 15))
-                            
-                            Text("30 minutes")
-                                .font(.system(size: 10))
-                            
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 140, height: 25)
-                                    .cornerRadius(6)
-                                    .foregroundColor(.myRed)
-                                
-                                Text("Add to Favs")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                            }
-                            
-                        }
-                    }
-                    
-                    ZStack {
-                        
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
-                        VStack{
-                            Image("pasta")
-                                .resizable()
-                                .frame(width: 140, height: 120)
-                            
-                            Text("Tomato & basil pasta")
-                                .bold()
-                                .font(.system(size: 15))
-                            
-                            Text("25 minutes")
-                                .font(.system(size: 10))
-                            
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 140, height: 25)
-                                    .cornerRadius(6)
-                                    .foregroundColor(.myRed)
-                                
-                                Text("Add to Favs")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                                
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
-                        VStack{
-                            Image("eggplant")
-                                .resizable()
-                                .frame(width: 140, height: 120)
-                            
-                            Text("Eggplant Unagi")
-                                .bold()
-                                .font(.system(size: 15))
-                            
-                            Text("30 minutes")
-                                .font(.system(size: 10))
-                            
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 140, height: 25)
-                                    .cornerRadius(6)
-                                    .foregroundColor(.myRed)
-                                
-                                Text("Add to Favs")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                            }
-                            
-                        }
-                    }
-                    
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(8)
-                            .frame(width: 180, height: 200)
-                            .foregroundColor(.myGray)
-                        
-                        VStack{
-                            Image("taco")
-                                .resizable()
-                                .frame(width: 140, height: 120)
-                            
-                            Text("Beef and salad tacos")
-                                .bold()
-                                .font(.system(size: 15))
-                            
-                            Text("20 minutes")
-                                .font(.system(size: 10))
-                            
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 140, height: 25)
-                                    .cornerRadius(6)
-                                    .foregroundColor(.myRed)
-                                
-                                Text("Add to Favs")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14))
-                            }
-                            
-                        }
-                    }
-                    
-                    
                 }
                 
             }
-            
         }
     }
 }
@@ -291,4 +127,3 @@ struct Home: View {
 #Preview {
     Home()
 }
-

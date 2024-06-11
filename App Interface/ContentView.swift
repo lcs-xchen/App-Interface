@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
-        
-        //Tab bar
+
         TabView(selection: Binding.constant(1)){
             Home()
                 .tabItem {
