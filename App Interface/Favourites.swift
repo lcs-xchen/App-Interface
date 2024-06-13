@@ -79,7 +79,6 @@ struct Favourites: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 14))
                             }
-                            
                         }
                     }
                     
@@ -251,16 +250,8 @@ struct Favourites: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 14))
                             }
-                            
                         }
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                 }
             }
         }

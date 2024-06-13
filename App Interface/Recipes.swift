@@ -60,8 +60,10 @@ struct Recipes: View {
                 }
             }
             .padding()
+            
         }
     }
+
 }
 
 struct CategoryView: View {
@@ -76,6 +78,7 @@ struct CategoryView: View {
                 .frame(width: 20, height: 20)
             Text(text)
                 .font(.headline)
+            
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -84,8 +87,6 @@ struct CategoryView: View {
     }
 }
 
-struct Recipes_Previews: PreviewProvider {
-    static var previews: some View {
-        Recipes()
-    }
+#Preview {
+    Recipes()
 }

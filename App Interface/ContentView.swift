@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
 
-        TabView(selection: Binding.constant(1)){
+        TabView{
             Home()
                 .tabItem {
                     Image(systemName: "house")
@@ -29,18 +29,17 @@ struct ContentView: View {
                     Text("Favourites")
                 } .tag(3)
             
-            Shopping()
+            ShoppingList()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Shopping")
                 } .tag(4)
         }
-        .accentColor(.black)
+        .accentColor(.myRed)
         
         
     }
 }
-
     
 #Preview {
     ContentView()
