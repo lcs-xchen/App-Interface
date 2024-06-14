@@ -15,6 +15,7 @@ struct Recipe: Identifiable {
 }
 
 struct Home: View {
+    @State private var searchText = ""
     
     let recipes = [
         Recipe(imageName: "beef", title: "Beef noodle soup", time: "30 minutes"),
@@ -25,23 +26,31 @@ struct Home: View {
         Recipe(imageName: "taco", title: "Beef and salad tacos", time: "20 minutes")
     ]
     
+    var filteredRecipes: [Recipe] {
+        if searchText.isEmpty {
+            return recipes
+        } else {
+            return recipes.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
+    
     var body: some View {
-        ScrollView{
-            VStack{
-                
+        ScrollView {
+            VStack {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.myGray)
                         .frame(width: 370, height: 50)
                         .cornerRadius(8)
                     
-                    
                     HStack {
                         Image(systemName: "magnifyingglass")
-                        Text("Search for recipes")
+                        TextField("Search for recipes", text: $searchText)
+                            .padding(.leading, 8)
                     }
-                    .padding(.trailing, 170)
+                    .padding(.horizontal, 16)
                 }
+                .padding(.vertical, 10)
                 
                 ZStack {
                     Rectangle()
@@ -49,8 +58,8 @@ struct Home: View {
                         .cornerRadius(8)
                         .foregroundColor(.myRed)
                     
-                    HStack{
-                        VStack{
+                    HStack {
+                        VStack {
                             ZStack {
                                 Rectangle()
                                     .frame(width: 185, height: 60)
@@ -64,7 +73,7 @@ struct Home: View {
                             
                             Text("Easy breakfast ideas with 3 ingredients")
                                 .foregroundColor(.white)
-                                .padding(.leading,18)
+                                .padding(.leading, 18)
                         }
                         
                         Image("breakfast")
@@ -85,14 +94,14 @@ struct Home: View {
                 
                 let twoColumns = [GridItem(), GridItem()]
                 LazyVGrid(columns: twoColumns) {
-                    ForEach(recipes) { recipe in
+                    ForEach(filteredRecipes) { recipe in
                         ZStack {
                             Rectangle()
                                 .cornerRadius(8)
                                 .frame(width: 180, height: 200)
                                 .foregroundColor(.myGray)
                             
-                            VStack{
+                            VStack {
                                 Image(recipe.imageName)
                                     .resizable()
                                     .frame(width: 140, height: 120)
@@ -118,12 +127,12 @@ struct Home: View {
                         }
                     }
                 }
-                
             }
+            .padding()
         }
     }
 }
-        
+
 #Preview {
     Home()
 }

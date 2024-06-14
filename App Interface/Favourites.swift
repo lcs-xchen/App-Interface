@@ -4,10 +4,11 @@
 //
 //  Created by Cindy Chen on 2024-05-31.
 //
-
 import SwiftUI
 
 struct Favourites: View {
+    @State private var searchText = ""
+    
     let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
@@ -17,18 +18,32 @@ struct Favourites: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.myGray)
-                        .frame(width: 370, height: 50)
+                HStack {
+                    TextField("Search for recipes", text: $searchText)
+                        .padding(7)
+                        .padding(.horizontal, 25)
+                        .background(Color(.systemGray6))
                         .cornerRadius(8)
-                    
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search for recipes")
-                    }
+                        .overlay(
+                            HStack {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.gray)
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, 8)
+                                
+                                if !searchText.isEmpty {
+                                    Button(action: {
+                                        self.searchText = ""
+                                    }) {
+                                        Image(systemName: "multiply.circle.fill")
+                                            .foregroundColor(.gray)
+                                            .padding(.trailing, 8)
+                                    }
+                                }
+                            }
+                        )
+                        .padding(.horizontal, 10)
                 }
-                .padding(.leading,10)
                 
                 LazyVGrid(columns: columns, spacing: 10) {
                     CategoryView(imageName: "birthday.cake", text: "Pastry")
@@ -57,7 +72,7 @@ struct Favourites: View {
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        VStack{
+                        VStack {
                             Image("beef")
                                 .resizable()
                                 .frame(width: 140, height: 120)
@@ -88,39 +103,29 @@ struct Favourites: View {
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        ZStack {
-                            Rectangle()
-                                .cornerRadius(8)
-                                .frame(width: 180, height: 200)
-                                .foregroundColor(.myGray)
+                        VStack {
+                            Image("kimchi")
+                                .resizable()
+                                .frame(width: 140, height: 120)
                             
-                            VStack{
-                                Image("kimchi")
-                                    .resizable()
-                                    .frame(width: 140, height: 120)
+                            Text("Kimchi Fried Rice")
+                                .bold()
+                                .font(.system(size: 15))
+                            
+                            Text("20 minutes")
+                                .font(.system(size: 10))
+                            
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 140, height: 25)
+                                    .cornerRadius(6)
+                                    .foregroundColor(.myRed)
                                 
-                                Text("Kimchi Fried Rice")
-                                    .bold()
-                                    .font(.system(size: 15))
-                                
-                                Text("20 minutes")
-                                    .font(.system(size: 10))
-                                
-                                ZStack {
-                                    Rectangle()
-                                        .frame(width: 140, height: 25)
-                                        .cornerRadius(6)
-                                        .foregroundColor(.myRed)
-                                    
-                                    Text("Add to Favs")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 14))
-                                }
-                                
+                                Text("Add to Favs")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 14))
                             }
                         }
-                        
-                        
                     }
                     
                     ZStack {
@@ -129,7 +134,7 @@ struct Favourites: View {
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        VStack{
+                        VStack {
                             Image("wrap")
                                 .resizable()
                                 .frame(width: 140, height: 120)
@@ -151,18 +156,16 @@ struct Favourites: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 14))
                             }
-                            
                         }
                     }
                     
                     ZStack {
-                        
                         Rectangle()
                             .cornerRadius(8)
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        VStack{
+                        VStack {
                             Image("pasta")
                                 .resizable()
                                 .frame(width: 140, height: 120)
@@ -183,11 +186,8 @@ struct Favourites: View {
                                 Text("Add to Favs")
                                     .foregroundColor(.white)
                                     .font(.system(size: 14))
-                                
                             }
-                            
                         }
-                        
                     }
                     
                     ZStack {
@@ -196,7 +196,7 @@ struct Favourites: View {
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        VStack{
+                        VStack {
                             Image("eggplant")
                                 .resizable()
                                 .frame(width: 140, height: 120)
@@ -218,7 +218,6 @@ struct Favourites: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 14))
                             }
-                            
                         }
                     }
                     
@@ -228,7 +227,7 @@ struct Favourites: View {
                             .frame(width: 180, height: 200)
                             .foregroundColor(.myGray)
                         
-                        VStack{
+                        VStack {
                             Image("taco")
                                 .resizable()
                                 .frame(width: 140, height: 120)
@@ -261,4 +260,3 @@ struct Favourites: View {
 #Preview {
     Favourites()
 }
-

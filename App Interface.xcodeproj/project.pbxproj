@@ -66,8 +66,8 @@
 				DF435EEF2C07762C000C5168 /* Home.swift */,
 				DF0D22C22C08D5C8006FD836 /* Recipes.swift */,
 				DF0D22C42C0A4CD5006FD836 /* Favourites.swift */,
-				DF0D22C62C0A5077006FD836 /* Shopping.swift */,
 				DF1683622C1A8FF7000BCE9D /* ShoppingList.swift */,
+				DF0D22C62C0A5077006FD836 /* Shopping.swift */,
 				DF782D6A2C011E6C0088AA7A /* Assets.xcassets */,
 				DF782D6C2C011E6C0088AA7A /* Preview Content */,
 			);
