@@ -24,7 +24,7 @@ struct Preferences: View {
     
     var body: some View {
         VStack {
-            Text("Set up your food")
+            Text("Set up your preferences")
                 .font(.largeTitle)
                 .bold()
                 .padding()
