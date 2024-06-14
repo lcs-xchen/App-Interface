@@ -9,14 +9,28 @@ import SwiftUI
 
 struct Recipes: View {
     private let categories = ["Quick", "On sale", "Pastry", "Fresh", "Protein", "Seafood", "Vegetarian", "Dairy", "Dessert", "On-the-go", "Juices", "Caffeine", "Smoothies", "Tea"]
-    @State private var searchResults: [String] = []
     @State private var categoriesSearch = ""
-    @State private var recipes = ""
     
     let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
+    
+    var filteredCategories: [String] {
+        if categoriesSearch.isEmpty {
+            return categories
+        } else {
+            return categories.filter { $0.localizedCaseInsensitiveContains(categoriesSearch) }
+        }
+    }
+    
+    var easyRecipes: [String] {
+        filteredCategories.filter { ["Pastry", "Fresh", "Protein", "Seafood", "Vegetarian", "Dairy", "Dessert", "On-the-go"].contains($0) }
+    }
+    
+    var beverages: [String] {
+        filteredCategories.filter { ["Juices", "Caffeine", "Smoothies", "Tea"].contains($0) }
+    }
     
     var body: some View {
         ScrollView {
@@ -29,52 +43,69 @@ struct Recipes: View {
                 }
                 .padding()
                 .background(Rectangle().foregroundColor(Color(.systemGray5)).cornerRadius(8))
-                .padding(.horizontal, 20)
+                .padding(.horizontal)
                 
                 LazyVGrid(columns: columns, spacing: 10) {
                     CategoryView(imageName: "fork.knife", text: "Quick")
                     CategoryView(imageName: "tag", text: "On sale")
                 }
+                .padding(.horizontal)
                 
                 Text("Easy recipes")
                     .font(.title)
                     .bold()
-                    .padding(.leading, 20)
+                    .padding(.leading)
                 
                 LazyVGrid(columns: columns, spacing: 10) {
-                    CategoryView(imageName: "birthday.cake", text: "Pastry")
-                    CategoryView(imageName: "carrot", text: "Fresh")
-                    CategoryView(imageName: "fork.knife", text: "Protein")
-                    CategoryView(imageName: "fish", text: "Seafood")
-                    CategoryView(imageName: "carrot", text: "Vegetarian")
-                    CategoryView(imageName: "cup.and.saucer", text: "Dairy")
-                    CategoryView(imageName: "birthday.cake", text: "Dessert")
-                    CategoryView(imageName: "takeoutbag.and.cup.and.straw", text: "On-the-go")
+                    ForEach(easyRecipes, id: \.self) { category in
+                        CategoryView(imageName: imageName(for: category), text: category)
+                    }
                 }
+                .padding(.horizontal)
                 
                 Text("Beverages")
                     .font(.title)
                     .bold()
-                    .padding(.leading, 20)
+                    .padding(.leading)
                 
                 LazyVGrid(columns: columns, spacing: 10) {
-                    CategoryView(imageName: "waterbottle", text: "Juices")
-                    CategoryView(imageName: "cup.and.saucer", text: "Caffeine")
-                    CategoryView(imageName: "waterbottle", text: "Smoothies")
-                    CategoryView(imageName: "mug", text: "Tea")
+                    ForEach(beverages, id: \.self) { category in
+                        CategoryView(imageName: imageName(for: category), text: category)
+                    }
                 }
-            }
-            .padding()
-            .onChange(of: categoriesSearch) { newValue in
-                searchResults = categories.filter { $0.localizedCaseInsensitiveContains(newValue) }
+                .padding(.horizontal)
             }
         }
-        .searchable(text: $categoriesSearch) {
-            ForEach(searchResults, id: \.self) { name in
-                Button(name) {
-                    recipes = name
-                }
-            }
+    }
+    
+    func imageName(for category: String) -> String {
+        switch category {
+        case "Quick":
+            return "fork.knife"
+        case "On sale":
+            return "tag"
+        case "Pastry":
+            return "birthday.cake"
+        case "Fresh", "Vegetarian":
+            return "carrot"
+        case "Protein":
+            return "fork.knife"
+        case "Seafood":
+            return "fish"
+        case "Dairy":
+            return "cup.and.saucer"
+        case "Dessert":
+            return "birthday.cake"
+        case "On-the-go":
+            return "takeoutbag.and.cup.and.straw"
+        case "Juices", "Smoothies":
+            return "waterbottle"
+        case "Caffeine":
+            return "cup.and.saucer"
+        case "Tea":
+            return "mug"
+        default:
+            return "fork.knife"
         }
     }
 }
@@ -99,7 +130,6 @@ struct CategoryView: View {
     }
 }
 
-#Preview{
-        Recipes()
-    }
-
+#Preview {
+    Recipes()
+}
