@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingPreferences = true
+    
     var body: some View {
+        if showingPreferences {
+            Preferences(showingPreferences: $showingPreferences)
+        } else {
+            MainTabView()
+        }
+    }
+}
 
-        TabView{
+struct MainTabView: View {
+    var body: some View {
+        TabView {
             Home()
                 .tabItem {
                     Image(systemName: "house")
@@ -35,12 +46,10 @@ struct ContentView: View {
                     Text("Shopping")
                 } .tag(4)
         }
-        .accentColor(.myRed)
-        
-        
+        .accentColor(.red)
     }
 }
-    
+
 #Preview {
     ContentView()
 }

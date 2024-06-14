@@ -16,6 +16,7 @@
 		DF782D692C011E6A0088AA7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF782D682C011E6A0088AA7A /* ContentView.swift */; };
 		DF782D6B2C011E6C0088AA7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF782D6A2C011E6C0088AA7A /* Assets.xcassets */; };
 		DF782D6E2C011E6C0088AA7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF782D6D2C011E6C0088AA7A /* Preview Assets.xcassets */; };
+		DFFFFBE32C1BEBA300E2403D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFFBE22C1BEBA300E2403D /* Preferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		DF782D682C011E6A0088AA7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DF782D6A2C011E6C0088AA7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF782D6D2C011E6C0088AA7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DFFFFBE22C1BEBA300E2403D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				DF782D662C011E6A0088AA7A /* App_InterfaceApp.swift */,
 				DF782D682C011E6A0088AA7A /* ContentView.swift */,
+				DFFFFBE22C1BEBA300E2403D /* Preferences.swift */,
 				DF435EEF2C07762C000C5168 /* Home.swift */,
 				DF0D22C22C08D5C8006FD836 /* Recipes.swift */,
 				DF0D22C42C0A4CD5006FD836 /* Favourites.swift */,
@@ -158,6 +161,7 @@
 				DF782D692C011E6A0088AA7A /* ContentView.swift in Sources */,
 				DF435EF02C07762C000C5168 /* Home.swift in Sources */,
 				DF782D672C011E6A0088AA7A /* App_InterfaceApp.swift in Sources */,
+				DFFFFBE32C1BEBA300E2403D /* Preferences.swift in Sources */,
 				DF0D22C32C08D5C8006FD836 /* Recipes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
